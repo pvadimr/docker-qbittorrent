@@ -20,11 +20,12 @@ be lost if the container is removed. So start it using this command:
 
     $ mkdir -p config torrents downloads
 	$ docker run -d --user $UID:$GID \
-		-p 8080:8080 -p 6881:6881/tcp -p 6881:6881/udp \
-		-v $PWD/config:/config \
-		-v $PWD/torrents:/torrents \
-		-v $PWD/downloads:/downloads \
-		pvadimr/qbittorrent
+	-p 8080:8080 -p 6881:6881/tcp -p 6881:6881/udp \
+	--name=qbittorrent --restart=always \
+	-v /data/qbittorrent/config:/config \
+	-v /data/qbittorrent/data:/torrents \
+	-v /data/downloads:/downloads \
+	pvadimr/qbittorrent
 
 ... to run as yourself and have WebUI running on [http://localhost:8080](http://localhost:8080)
 (username: `admin`, password: `adminadmin`) with config in the following locations mounted:

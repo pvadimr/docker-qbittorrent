@@ -29,6 +29,10 @@ RUN set -x \
 COPY qBittorrent.conf /default/qBittorrent.conf
 COPY entrypoint.sh /
 
+RUN set -x \
+    # Add non-root user
+ && chmod 777 /entrypoint.sh
+
 VOLUME ["/config", "/torrents", "/downloads"]
 
 ENV HOME=/home/qbittorrent

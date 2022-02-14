@@ -1,4 +1,4 @@
-FROM arm32v7/debian
+FROM arm64v8/debian
 
 RUN set -x \
     # Install qBittorrent-NoX

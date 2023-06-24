@@ -3,8 +3,6 @@ What is qBittorrent?
 
 [qBittorrent](http://www.qbittorrent.org/) NoX is the headless with remote web interface version of qBittorrent BitTorrent client.
 
-![qBittorrent logo](https://github.com/pvadimr/docker-qbittorrent/blob/master/docs/qbittorrent-logo.png?raw=true)
-
 Based on: https://github.com/wernight/docker-qbittorrent
 
 Usage
@@ -12,13 +10,13 @@ Usage
 
 All mounts and ports are optional and qBittorrent will work even with only:
 
-    $ docker run pvadimr/qbittorrent
+    $ docker run pvadimr/qbittorrent:latest
 
 ... however that way some ports used to connect to peers are not exposed, accessing the
 web interface requires you to proxy port 8080, and all settings as well as downloads will
 be lost if the container is removed. So start it using this command:
 
-    $ mkdir -p config torrents downloads
+    $ mkdir -p /data/qbittorrent/config /data/qbittorrent/torrents /data/downloads
 	$ docker run -d --user $UID:$GID \
 	-p 8080:8080 -p 6881:6881/tcp -p 6881:6881/udp \
 	--name=qbittorrent --restart=always \
